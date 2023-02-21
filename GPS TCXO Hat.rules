@@ -1,0 +1,99 @@
+
+(rules PCB GPS TCXO Hat
+  (snap_angle 
+    fortyfive_degree
+  )
+  (autoroute_settings
+    (fanout on)
+    (autoroute on)
+    (postroute on)
+    (vias on)
+    (via_costs 50)
+    (plane_via_costs 5)
+    (start_ripup_costs 100)
+    (start_pass_no 4)
+    (layer_rule F.Cu
+      (active on)
+      (preferred_direction vertical)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 2.5)
+    )
+    (layer_rule B.Cu
+      (active on)
+      (preferred_direction horizontal)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 1.7)
+    )
+  )
+  (rule
+    (width 250.0)
+    (clear 200.0)
+    (clear 125.0 (type smd_to_turn_gap))
+    (clear 50.0 (type smd-smd))
+  )
+  (padstack "Via[0-1]_800:400_um"
+    (shape
+      (circle F.Cu 800.0 0.0 0.0)
+    )
+    (shape
+      (circle B.Cu 800.0 0.0 0.0)
+    )
+    (attach off)
+  )
+  (via 
+    "Via[0-1]_800:400_um" "Via[0-1]_800:400_um" default
+  )
+  (via 
+    "Via[0-1]_800:400_um-kicad_default" "Via[0-1]_800:400_um" "kicad_default"
+  )
+  (via 
+    "Via[0-1]_800:400_um-EXT_ANT" "Via[0-1]_800:400_um" "EXT_ANT"
+  )
+  (via_rule
+    default "Via[0-1]_800:400_um"
+  )
+  (via_rule
+    "kicad_default" "Via[0-1]_800:400_um-kicad_default"
+  )
+  (via_rule
+    "EXT_ANT" "Via[0-1]_800:400_um-EXT_ANT"
+  )
+  (class default
+    (clearance_class default)
+    (via_rule default)
+    (rule
+      (width 250.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class "kicad_default"
+    GND +3.3V +5V "Net-(U3-BP)" "unconnected-(J1-Pin_1-Pad1)" "/RTC_SDA" "/RTC_SCL" "unconnected-(J1-Pin_7-Pad7)"
+    "/GPS_RX" "unconnected-(J1-Pin_9-Pad9)" "/GPS_TX" "unconnected-(J1-Pin_11-Pad11)" "unconnected-(J1-Pin_12-Pad12)" "unconnected-(J1-Pin_13-Pad13)" "unconnected-(J1-Pin_14-Pad14)" "unconnected-(J1-Pin_15-Pad15)"
+    "/GPS_PPS" "unconnected-(J1-Pin_17-Pad17)" "unconnected-(J1-Pin_18-Pad18)" "unconnected-(J1-Pin_19-Pad19)" "unconnected-(J1-Pin_20-Pad20)" "unconnected-(J1-Pin_21-Pad21)" "unconnected-(J1-Pin_22-Pad22)" "unconnected-(J1-Pin_23-Pad23)"
+    "unconnected-(J1-Pin_24-Pad24)" "unconnected-(J1-Pin_25-Pad25)" "unconnected-(J1-Pin_26-Pad26)" "unconnected-(J1-Pin_27-Pad27)" "unconnected-(J1-Pin_28-Pad28)" "unconnected-(J1-Pin_29-Pad29)" "unconnected-(J1-Pin_30-Pad30)" "unconnected-(J1-Pin_31-Pad31)"
+    "unconnected-(J1-Pin_32-Pad32)" "unconnected-(J1-Pin_33-Pad33)" "unconnected-(J1-Pin_34-Pad34)" "unconnected-(J1-Pin_35-Pad35)" "unconnected-(J1-Pin_36-Pad36)" "unconnected-(J1-Pin_37-Pad37)" "unconnected-(J1-Pin_38-Pad38)" "unconnected-(J1-Pin_39-Pad39)"
+    "unconnected-(J1-Pin_40-Pad40)" "/EXT_ANT" "Net-(Q1-G)" "unconnected-(U1-32KHZ-Pad1)" "unconnected-(U1-~{INT}{slash}SQW-Pad3)" "unconnected-(U1-~{RST}-Pad4)" "unconnected-(U2-3D_FIX-Pad5)" "unconnected-(U2-NC-Pad6)"
+    "unconnected-(U2-NC-Pad7)" "unconnected-(U2-TX0(I2C_SDA)-Pad9)" "unconnected-(U2-RX0(I2C_SCL)-Pad10)" "unconnected-(U2-NC-Pad16)" "unconnected-(U2-NC-Pad17)" "unconnected-(U2-NC-Pad18)" "unconnected-(U2-NC-Pad20)" "Net-(Q1-S)"
+    "Net-(U2-NRESET)"
+    (clearance_class "kicad_default")
+    (via_rule "kicad_default")
+    (rule
+      (width 250.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class "EXT_ANT"
+    (clearance_class "EXT_ANT")
+    (via_rule "EXT_ANT")
+    (rule
+      (width 3000.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+)

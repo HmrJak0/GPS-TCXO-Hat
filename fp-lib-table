@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "GPS TCXO Hat")(type "KiCad")(uri "${KIPRJMOD}/GPS TCXO Hat.pretty")(options "")(descr ""))
+)
